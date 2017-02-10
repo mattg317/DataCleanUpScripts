@@ -1,0 +1,37 @@
+Formula for Stage
+
+=IFS(BN2<>"", "Pending Enrollment", BM2<>"", "Assess", BL2<>"","Assess",BK2<>"","Assess", BJ2<>"", "Assess", BI2<>"", "Application", BH2<>"", "Application", BG2<>"", "Interview", BF2<>"", "Interview", BE2<>"", "Closed Won", BD2<>"", "Closed Missed", BC2<>"", "Contacted", BB2<>"", "Attempted Contact", BA2<>"", "New")
+
+Formula for Step
+
+=IFS(BN2<>"", "--None--", BM2<>"", "Academic Interview 2nd Coding Test Req", BL2<>"","Academic Interview Declined",BK2<>"","Academic Interview Approved", BJ2<>"", "Academic Interview Scheduled", BI2<>"", "Application and Coding Test Submitted", BH2<>"", "Application Pending", BG2<>"", "Phone Interview Complete", BF2<>"", "Phone Interview Scheduled", BE2<>"", "Closed Won", BD2<>"", "Closed Missed", BC2<>"", "Contacted", BB2<>"", "Attempted Contact", BA2<>"", "New")
+
+//Formula for updated Salesfor file================================================================
+
+Stage Formula for Updated Spread Sheet (make sure its format is general)
+
+=IFS(AX2<>"", "Pending Enrollment", AW2<>"", "Assess", AV2<>"","Assess",AU2<>"","Assess", AT2<>"", "Assess", AR2<>"", "Application", AP2<>"", "Application", AN2<>"", "Interview", AM2<>"", "Interview", AK2<>"", "Closed Won", AJ2<>"", "Closed Missed", AI2<>"", "Contacted", AH2<>"", "Attempted Contact", AG2<>"", "New", AG2="","")
+
+Step Formua for Updated Spread Sheet
+
+=IFS(AX2<>"", "--None--", AW2<>"", "Academic Interview 2nd Coding Test Req", AV2<>"","Academic Interview Declined",AU2<>"","Academic Interview Approved", AT2<>"", "Academic Interview Scheduled", AR2<>"", "Application and Coding Test Submitted", AP2<>"", "Application Pending", AN2<>"", "Phone Interview Complete", AM2<>"", "Phone Interview Scheduled", AK2<>"", "Closed Won", AJ2<>"", "Closed Missed", AI2<>"", "Contacted", AH2<>"", "Attempted Contact", AG2<>"", "New", AG2="","")
+
+Formula for Expected Decision Date
+
+Date Stage to Interview 
+=IFS(AM2<>"",AM2,AN2<>"",AN2, AN2="", "")
+
+Date Stage to Application
+=IFS(AP2<>"",AP2,AR2<>"",AR2,AR2="","")
+
+
+Date Stage Set to Assess
+=IFS(AT2<>"", AT2, AU2<>"", AU2, AV2<>"", AV2, AW2<>"",AW2, AW2="", "")
+
+Expected Decision Date
+
+=IFS(L2="Closed Missed",AJ2, L2="Closed Won",AK2, L2="New",TODAY()+20, L2="Attempted Contact", TODAY()+20, L2="Contacted", TODAY()+20, L2="Interview", TODAY()+10, L2="Application", TODAY()+10, L2="Assess", TODAY()+10, L2="Pending Enrollment", TODAY()+3)
+
+
+Class Cohort (make sure to use a second sheet)
+=VLOOKUP(J25,'University Class Cohort'!A$2:B$21,2,FALSE)
